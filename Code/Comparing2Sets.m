@@ -10,11 +10,6 @@ jUnisensFactory = org.unisens.UnisensFactoryBuilder.createFactory();
 jUnisens1 = jUnisensFactory.createUnisens(path1);
 jUnisens2 = jUnisensFactory.createUnisens(path2);
 
-%Rules
-edaCeiling = 60; %in µS
-edaFloor = 0.2; %in µS
-maxslope = 1; %in µS per sec
-
 % Read a binary file
 edaEntry1 = jUnisens1.getEntry('eda.bin');
 edaData1 = edaEntry1.readScaled(edaEntry1.getCount()); 
@@ -64,14 +59,6 @@ k=1:size(edaData2,1);
 TimeEda2 = k/SReda2;
 TimeEda2 = TimeEda2';
 
-% 
-% 
-% ax1 = subplot(2,1,1);
-% plot(ax1,TimeStampAcc2,accData2);
-% title("Acceleration over time");
-% ylabel("Acceleration in g");
-
-% ax2 = subplot(2,1,2);
 plot(TimeStampEDA1,edaData1);
 hold on;
 plot(TimeStampEDA2,edaData2);
