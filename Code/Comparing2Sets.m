@@ -1,10 +1,15 @@
+%%This program allows the user to compare to EDA signals
+
 clear all;
 close all;
 
-tic
 
-path1='C:\Users\Alex\Documents\TPS 2A\Stage 2A\TNO\cleaning signal\stimuli\Marc 05-8-18\2018-08-05 15.30.01 MARC  LEFT PALM NOT MOVING ARTIFACT EXP';
-path2='C:\Users\Alex\Documents\TPS 2A\Stage 2A\TNO\cleaning signal\stimuli\Marc 05-8-18\2018-08-05 15.30.01 MARC RIGHT PALM MOVING ARTIFACT EXP';
+path = uigetdir; %here you select the folder which contains the two sets retrieved from edamove
+
+
+path1 = [path '\LEFT HAND NOT MOVING']; %feel free to adapt if the subfolders are named differently. don't forget to check the legend if correction is needed.
+path2 = [path '\RIGHT HAND MOVING'];
+
 
 jUnisensFactory = org.unisens.UnisensFactoryBuilder.createFactory();
 jUnisens1 = jUnisensFactory.createUnisens(path1);
@@ -62,10 +67,8 @@ TimeEda2 = TimeEda2';
 plot(TimeStampEDA1,edaData1);
 hold on;
 plot(TimeStampEDA2,edaData2);
-ylim([0 6*max(mean(edaData1),mean(edaData1))]);
+ylim([0 6*max(mean(edaData1),mean(edaData2))]);
 xlim([datetime(min(TimeStart1,TimeStart2))- minutes(5),datetime(max(TimeStampEDA1(length(TimeStampEDA1)),TimeStampEDA2(length(TimeStampEDA2))))+minutes(5)]);
 title("Comparing 2 EDA sigals");
 ylabel("EDA in µS");
 legend('Left palm sensor ','Right palm sensor ');
-
-toc
