@@ -166,7 +166,9 @@ for j=1:size(time_markers_clean,2)
     for i=1:size(time_markers_clean,1)
         time_ref2 = time_markers_clean(i,j);
         time_else2 = TimeStampEDA2;
+        time_else3 = TimeStampEDA1;
         data_else2 = edaData2;
+        data_else3 = edaData1;
 
         time_difference2 = [];
 
@@ -175,9 +177,13 @@ for j=1:size(time_markers_clean,2)
         min_index2 = find(time_difference2==min(time_difference2));
         last_index2 = min_index2+320;
 
+        k=1:length(time_else3);
+        time_difference2(k) = abs(datenum(time_ref2)-datenum(time_else3(k)));
+        min_index3 = find(time_difference2==min(time_difference2));
+        last_index3 = min_index3+320;
         %Make sub-arrays
         time_else2 = min_index2:last_index2;
-        data_else2 = abs(data_else2(min_index2:last_index2)-edaData1(min_index2:last_index2));
+        data_else2 = abs(data_else2(min_index2:last_index2)-edaData1(min_index3:last_index3));
         
         if i==1
             offset_ref = data_else2(1);
