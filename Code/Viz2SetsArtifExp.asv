@@ -177,14 +177,10 @@ for j=1:size(time_markers_clean,2)
 
         %Make sub-arrays
         time_else2 = min_index2:last_index2;
-        data_else2 = abs(data_else2(min_index2:last_index2)-edaData1(min_index2:last_index2));
-        
-        if i==1
-            offset_ref = data_else2(1);
-        else
-            data_else2=data_else2-(data_else2(1)-offset_ref);
-        end
-        
+        data_else2 = data_else2(min_index2:last_index2);
+        data_ref
+        if i>1
+            
         axis_compare = (1:321);
         plot(axis_compare,data_else2);
     end
