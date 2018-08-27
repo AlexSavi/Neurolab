@@ -81,7 +81,7 @@ time_else = [];
 data_ref = [];
 data_else = [];
 
-if(TimeStampEDA1(1)<TimeStampEDA2(1))
+if(TimeStampEDA1(1)<TimeStampEDA2(1)) %Which sensor has first started recording, if it's the 1st one, we choose the 2nd's first datetime as starting point
     time_ref = TimeStampEDA2;
     data_ref = edaData2;
     time_else = TimeStampEDA1;
@@ -104,8 +104,9 @@ time_difference(k) = abs(datenum(time_ref(1))-datenum(time_else(k)));
 min_index = find(time_difference==min(time_difference));
 
 %Make sub-arrays
-time_else = time_else(min_index:length(time_else));
-data_else = data_else(min_index:length(time_else));
+len_time_else = length(time_else);
+time_else = time_else(min_index:len_time_else);
+data_else = data_else(min_index:len_time_else);
 
 if length(time_else) < length(time_ref)
     last_index = length(time_else)-1;
@@ -127,7 +128,7 @@ data_else_output = data_else(i);
 figure(2);
 hold on;
 
-plot(time_ref_output, abs(data_ref_output-data_else_output));
+plot(time_ref_output, abs(max(data_ref_output,data_else_output)-min(data_ref_output,data_else_output)));
 title('Difference between both signals over time at the same datetime');
 ylabel('Difference in EDA in µS');
 
@@ -156,21 +157,36 @@ for j=1:size(logical_tab,2)
    time_markers_clean(:,j) = time_markers(any(~isnat(time_markers(:,j)),2),j);
 end
 
-
-
-
-
 for j=1:size(time_markers_clean,2)
     figure(2+j);
     hold on;
     for i=1:size(time_markers_clean,1)
-        time_ref2 = time_markers_clean(i,j);
-        time_else2 = TimeStampEDA2;
-        time_else3 = TimeStampEDA1;
-        data_else2 = edaData2;
-        data_else3 = edaData1;
+%         time_ref2 = time_markers_clean(i,j);
+%         time_else2 = TimeStampEDA2;
+%         time_else3 = TimeStampEDA1;
+%         data_else2 = edaData2;
+%         data_else3 = edaData1;
+
+            time_ref2 = time_markers_clean(i,j);
+            time_else2 = [];
+            time_else3 = [];
+            data_else2 = [];
+            data_else3 = [];
+
+            if(TimeStampEDA1(1)<TimeStampEDA2(1))
+                time_else2 = TimeStampEDA2;
+                data_else2 = edaData2;
+                time_else3 = TimeStampEDA1;
+                data_else3 = edaData1;
+            else
+                time_else2 = TimeStampEDA1;
+                data_else2 = edaData1;
+                time_else3 = TimeStampEDA2;
+                data_else3 = edaData2;
+            end
 
         time_difference2 = [];
+        time_difference3 = [];
 
         k=1:length(time_else2);
         time_difference2(k) = abs(datenum(time_ref2)-datenum(time_else2(k)));
@@ -178,21 +194,23 @@ for j=1:size(time_markers_clean,2)
         last_index2 = min_index2+320;
 
         k=1:length(time_else3);
-        time_difference2(k) = abs(datenum(time_ref2)-datenum(time_else3(k)));
-        min_index3 = find(time_difference2==min(time_difference2));
+        time_difference3(k) = abs(datenum(time_ref2)-datenum(time_else3(k)));
+        min_index3 = find(time_difference3==min(time_difference3));
         last_index3 = min_index3+320;
         %Make sub-arrays
-        time_else2 = min_index2:last_index2;
-        data_else2 = abs(data_else2(min_index2:last_index2)-edaData1(min_index3:last_index3));
-        
+% uncoment following line if you want to show difference between left and
+% right hand
+%         abs(data_else2(min_index2:last_index2)-edaData1(min_index3:last_index3));
+%         
+        data_output = edaData2(min_index2:last_index2);
         if i==1
             offset_ref = data_else2(1);
-        else
-            data_else2=data_else2-(data_else2(1)-offset_ref);
         end
+            data_output=data_output-(data_output(1)-offset_ref);
         
+%         ylim([1.8 2.6]);
         axis_compare = (1:321);
-        plot(axis_compare,data_else2);
+        plot(axis_compare,data_output);
     end
     title('Instruction n° ' + string(j) + ' : ' + ListOfEvents(j));
 end

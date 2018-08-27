@@ -5,7 +5,7 @@ tic
 
 %   0) Préliminaires (pour utiliser unisens4matlab)
 % a. path
-path='C:\Users\Alex\Documents\data_edamove\2018-07-02 11.40.01 REF';
+path='C:\Users\Alex\Documents\data_edamove\2018-06-29 10.22.46';
 
 % b. create unisens object
 
