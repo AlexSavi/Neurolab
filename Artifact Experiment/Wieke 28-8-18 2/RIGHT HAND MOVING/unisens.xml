@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<unisens duration="785.0" measurementId="RIGHT HAND MOVING" timestampStart="2018-08-28T14:50:00.727" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.unisens.org/unisens2.0 http://www.unisens.org/unisens2.0/unisens.xsd" xmlns="http://www.unisens.org/unisens2.0">
+<customAttributes>
+<customAttribute key="sensorLocation" value="right_side_hip"/>
+<customAttribute key="gender" value="M"/>
+<customAttribute key="sensorType" value="Move3"/>
+<customAttribute key="sensorVersion" value="1.10.11"/>
+<customAttribute key="personId" value="Wieke"/>
+<customAttribute key="sectorCount" value="409"/>
+<customAttribute key="sensorSerialNumber" value="02425"/>
+</customAttributes>
+<signalEntry adcResolution="16" comment="temp" contentClass="temp" dataType="int16" id="temp.bin" lsbValue="0.1" sampleRate="1" unit="Grad Celsius">
+<binFileFormat endianess="LITTLE"/>
+<channel name="temp"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="charging" contentClass="charging" dataType="int16" id="charging.bin" lsbValue="1" sampleRate="0.016666666666666666" unit="">
+<binFileFormat endianess="LITTLE"/>
+<channel name="charging"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="stateOfCharge" contentClass="stateOfCharge" dataType="int16" id="stateofcharge.bin" lsbValue="1" sampleRate="0.016666666666666666" unit="%">
+<binFileFormat endianess="LITTLE"/>
+<channel name="stateOfCharge"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="eda" contentClass="eda" dataType="int16" id="eda.bin" lsbValue="0.0030518508225365697" sampleRate="32" unit="uS">
+<binFileFormat endianess="LITTLE"/>
+<channel name="eda"/>
+</signalEntry>
+<signalEntry adcResolution="32" comment="press" contentClass="press" dataType="int32" id="press.bin" lsbValue="0.125" sampleRate="8" unit="Pa">
+<binFileFormat endianess="LITTLE"/>
+<channel name="press"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="acc" contentClass="acc" dataType="int16" id="acc.bin" lsbValue="0.00390625" sampleRate="64" unit="g">
+<binFileFormat endianess="LITTLE"/>
+<channel name="accX"/>
+<channel name="accY"/>
+<channel name="accZ"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="movementAcceleration" contentClass="movementAcceleration" dataType="int16" id="movementacceleration.bin" lsbValue="0.00390625" sampleRate="0.016666666666666666" unit="g">
+<binFileFormat endianess="LITTLE"/>
+<channel name="movementAcceleration"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="stepCount" contentClass="stepCount" dataType="int16" id="stepcount.bin" lsbValue="1" sampleRate="0.016666666666666666" unit="steps">
+<binFileFormat endianess="LITTLE"/>
+<channel name="stepCount"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="edaSclMean" contentClass="edaSclMean" dataType="int16" id="edasclmean.bin" lsbValue="0.0030518508225365697" sampleRate="0.016666666666666666" unit="uS">
+<binFileFormat endianess="LITTLE"/>
+<channel name="edaSclMean"/>
+</signalEntry>
+<signalEntry adcResolution="16" comment="tempMean" contentClass="tempMean" dataType="int16" id="tempmean.bin" lsbValue="0.1" sampleRate="0.016666666666666666" unit="">
+<binFileFormat endianess="LITTLE"/>
+<channel name="tempMean"/>
+</signalEntry>
+<eventEntry commentLength="10" id="marker.csv" sampleRate="64" typeLength="1">
+<csvFileFormat decimalSeparator="." separator=";"/>
+</eventEntry>
+</unisens>

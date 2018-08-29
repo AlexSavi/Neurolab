@@ -5,7 +5,7 @@ tic
 
 %   0) Préliminaires (pour utiliser unisens4matlab)
 % a. path
-path='C:\Users\Alex\Documents\data_edamove\2018-06-29 10.22.46';
+path='C:\Users\Alex\Documents\TPS 2A\Stage 2A\TNO\cleaning signal\Neurolab Git\Artifact Experiment\Wieke 28-8-18\LEFT HAND NOT MOVING';
 
 % b. create unisens object
 
@@ -20,7 +20,7 @@ edaFloor = 0.2; %in µS
 maxslope = 1; %in µS per sec
 
 % Read a binary file
-edaEntry = jUnisens.getEntry('eda.bin');
+edaEntry = jUnisens.getEntry('eda_live.bin');
 edaData = edaEntry.readScaled(edaEntry.getCount()); 
 
 accEntry = jUnisens.getEntry('acc.bin');

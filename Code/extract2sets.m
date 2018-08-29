@@ -11,7 +11,6 @@ path = uigetdir; %here you select the folder which contains the two sets retriev
 path1 = [path '\LEFT HAND NOT MOVING']; %feel free to adapt if the subfolders are named differently
 path2 = [path '\RIGHT HAND MOVING'];
 
-
 %Creation of the unisens objects
 jUnisensFactory = org.unisens.UnisensFactoryBuilder.createFactory();
 jUnisens1 = jUnisensFactory.createUnisens(path1);
